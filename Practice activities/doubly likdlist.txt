@@ -1,0 +1,213 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+
+public class DoubleLinkedList{
+    
+private class Node{
+    
+    private int value;
+    private Node preNode;
+    private Node nextNode;
+    
+    public Node(int value){
+        this.value = value;
+    }
+}
+
+private Node firstNode;
+private Node lastNode;
+
+
+//add first method
+public void addFirst(int item){
+    Node node = new Node(item);
+    
+    if(firstNode == null){
+        firstNode = lastNode = node;
+    }else{
+        node.nextNode = firstNode;
+        firstNode.preNode = node;
+        firstNode = node;
+    }
+}
+
+//add last method
+public void addLast(int item){
+   Node node = new Node(item);
+   
+   if(firstNode == null) {
+       firstNode = lastNode = node;
+   }else{
+       lastNode.nextNode = node;
+       node.preNode = lastNode;
+       lastNode = node;
+   }
+}
+
+
+//add item anywarre
+public void addItem(int index, int item){
+    if(index >= 0 && index <= getLwngth) {
+        if(index == 0){
+            addFirst(item);
+            
+        }else if(index == getLwngth()){
+            addLast(item);
+        }else{
+            Node currentNode = firstNode;
+            Node preCurrentNode;
+            int i = 0;
+            
+            while(currentNode != null){
+                
+                if(i==index){
+                    Node node = new Node(item);
+                    preCurrentNode = currentNode.preNode;
+                    
+                    preCurrentNode.nextNode = node;
+                    node.preNode = preCurrentNode;
+                    
+                    currentNode.preNode = node;
+                    noe.nextNode = currentNode;
+                    
+                    break;
+                }
+                i++;
+                currentNode = currentNode.nextNode;
+            }
+        }
+    }else{
+        throw new IndexOutOfBoundsException();
+}
+
+//chechinkg whether the list is emoty
+public int getLwngth(){
+    int length = 0;
+    Node currentNode = firstNode;
+    
+    while(currentNode != null){
+        length++;
+        currentNode = currentNode.nextNode;
+    }
+    return length;
+}
+
+//display method
+public void printAll(){
+    
+    Node currentNode = firstNode;
+    
+    String result;
+    if(getLwngth() == 0){
+        result = "[]";
+    }
+    else{
+        result = "[" + currentNode.value;
+        currentNode = currentNode.nextNode;
+        
+        while(currentNode != null){
+            result = result + "," + currentNode.value;
+            currentNode  = currentNode.nextNode;
+        }
+    }
+    
+    System.out.System.out.println();
+    
+    
+    
+    
+    
+}
+
+//remove/delete
+public void removeFirst(){
+    if(firstNode == null){
+        er;;;
+    }
+    if(firstNode == lastNode){
+        firstNode = lastNode = null;
+        return;
+    }
+    
+    Node seconndNode = firstNode.nextNode;
+    firstNode.nextNode=null;
+    seconndNode.preNode = ull;
+    firstNode = seconndNode;
+}
+
+
+//remove last node 
+public void removeLast(){
+    if(firstNode == null){
+        throw new NoSuc;;
+    }
+    if(firstNode == lastNode){
+        firstNode == lastNode = null;
+        return;
+    }
+    
+    Node preNode = lastNode.preNode;
+    lastNode = preNode;
+    lastNode.nextNode = null;
+}
+
+/indexOf
+public void indexOf(int item){
+int index = 0;
+Node currentNode = firstNode;
+
+while(currentNode == != null){
+if(item == currentNode.value){
+return index;
+}
+
+currrentNode = currentNode.nextnode;
+index++;
+}
+return -1;
+}
+
+//rmove given index
+public void removeAt(int index){
+    if (index >=0 && index < getLwngth()){
+        if(index == 0){
+            removeFirst();
+        }else if(index == getLwngth()-1){
+            removeLast():
+        }else{
+            Node currentNode = firstNode;
+            int i = 0;
+            
+            while(currentNode != null){
+                if(i == index){
+                    Node preNode = currentNode.preNode;
+                    Node nextNode = currentNode.nextNode;
+                    
+                    currentNode.preNode = null;
+                    currentNode.nextNode= null;
+                    
+                    preNode.nextNode = nextNode;
+                    nextNode.preNode = preNode;
+                    
+                    break;
+                }
+            }
+        }
+    }
+}
+
+
+}
+
+public class Main{
+    public static void main (String[]args){
+       DoubleLinkedList list = new DoubleLinkedList();
+       
+       list.display();
+    }
+}
