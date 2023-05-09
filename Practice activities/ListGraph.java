@@ -1,10 +1,15 @@
 
 package dsa;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.Stack;
+import java.util.Queue;
 
 
 
@@ -69,6 +74,67 @@ public class ListGraph {
         
         adjacencyList.remove(node);
         nodes.remove(node);
+    }
+    
+    
+    public void traverseDFS(String root){
+        
+        Node node = nodes.get(root);
+        
+        if(node == null){
+          return;  
+        }
+        
+        Set<Node> visited = new HashSet<>(); //RESULT
+        Stack<Node> stack = new Stack<>(); //STACK
+        stack.push(node);
+        
+        while(!stack.isEmpty()){
+            Node currentNode = stack.pop();
+            if(visited.contains(currentNode)){
+                continue;
+            }
+            visited.add(currentNode);
+            System.out.println(currentNode);
+            
+            for(Node neighbour : adjacencyList.get(currentNode)){
+                if(!visited.contains(neighbour)){
+                    stack.push(neighbour);
+                }
+            }
+            
+        }
+        
+    }
+    
+    public void traverseBFS(String root){
+        Node node = nodes.get(root);
+        
+        if(node == null){
+          return;  
+        }
+        
+        Set<Node> visited = new HashSet<>(); //RESULT
+        Queue<Node> queue = new ArrayDeque<>();
+        queue.add(node);
+        
+        while(!queue.isEmpty()){
+            Node currentNode = queue.remove();
+            if(visited.contains(currentNode)){
+                continue;
+            }
+            visited.add(currentNode);
+            System.out.println(currentNode);
+            
+            for(Node neighbour : adjacencyList.get(currentNode)){
+                if(!visited.contains(neighbour)){
+                    queue.add(neighbour);
+                }
+            }
+            
+        }
+        
+        
     }
     
     
